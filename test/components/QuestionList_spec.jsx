@@ -4,7 +4,6 @@ import {expect} from 'chai';
 
 const {
         renderIntoDocument,
-        scryRenderedDOMComponentsWithTag,
         findAllInRenderedTree,
         isDOMComponent
       } = React.addons.TestUtils;
