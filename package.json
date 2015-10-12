@@ -1,7 +1,7 @@
 {
-  "name": "client",
-  "version": "1.0.0",
-  "description": "Lyme test client",
+  "name": "redux-survey",
+  "version": "0.0.0",
+  "description": "A redux powered survey app",
   "main": "index.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js 'test/**/*.@(js|jsx)'",
