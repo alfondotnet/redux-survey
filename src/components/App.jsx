@@ -21,7 +21,7 @@ const initialState = {
 export default React.createClass({
   render: function() {
     return <div className="app">
-      <QuestionList list={initialState.questionList} onAnswer={(number) => console.log('answered '+ number)} />
+      <QuestionList list={initialState.questionList} onAnswer={(questionIndex,answer) => console.log('answered question '+ questionIndex + ' with answer ' + answer)} />
     </div>;
   }
 });
