@@ -2,21 +2,28 @@ import React from 'react';
 
 export default React.createClass({
   render: function() {
-    return <div className="questionBox">
-        <div className="questionTitle">{this.props.question.questionText}</div>
-        <div className="answerBox">
-          <ul className="listOptions">
-            {this.props.question.possibleAnswers.map(
-              (option, optionIndex) =>
-                <li
-                  key={'option_' + optionIndex}
-                  className="answerOption"
-                  onClick={() => this.props.onAnswer(this.props.questionIndex,option)}>
-                  {option}
-                </li>
-            )}
-          </ul>
+
+    const {question, onAnswer, questionIndex} = this.props;
+
+    if (question.answer === null) {
+      return <div className="questionBox">
+          <div className="questionTitle">{question.questionText}</div>
+          <div className="answerBox">
+            <ul className="listOptions">
+              {question.possibleAnswers.map(
+                (option, optionIndex) =>
+                  <li
+                    key={'option_' + optionIndex}
+                    className="answerOption"
+                    onClick={() => onAnswer(questionIndex,option)}>
+                    {option}
+                  </li>
+              )}
+            </ul>
+          </div>
         </div>
-      </div>
+    } else {
+      return null;
+    }
   }
 });
