@@ -13,20 +13,22 @@ describe('QuestionList', () => {
       <QuestionList list={[{
                             question: 'Question 1',
                             score: null,
+                            possibleAnswers: [1,2,3],
                             extraPoints: 1,
                            },
                            {
                             question: 'Question 2',
                             score: null,
+                            possibleAnswers: [1,2,3],
                             extraPoints: 2,
                            }]} />
     );
 
-    const liItems = scryRenderedDOMComponentsWithTag(component, 'li');
+    const divItems = scryRenderedDOMComponentsWithTag(component, 'div');
 
-    expect(liItems.length).to.equal(2);
-    expect(liItems[0].textContent).to.equal('Question 1');
-    expect(liItems[1].textContent).to.equal('Question 2');
+    expect(divItems.length).to.equal(4);
+    expect(divItems[2].textContent).to.equal('Question 1');
+    expect(divItems[3].textContent).to.equal('Question 2');
   });
 
 });

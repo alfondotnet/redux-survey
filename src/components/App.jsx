@@ -6,11 +6,13 @@ const initialState = {
                         {
                           question: 'Question 1',
                           score: null,
+                          possibleAnswers: [1,2,3],
                           extraPoints: 1,
                         },
                         {
                           question: 'Question 2',
                           score: null,
+                          possibleAnswers: [1,2,3],
                           extraPoints: 2,
                         }
                       ]
@@ -19,7 +21,7 @@ const initialState = {
 export default React.createClass({
   render: function() {
     return <div className="app">
-      <QuestionList list={initialState.questionList} />
+      <QuestionList list={initialState.questionList} onAnswer={(number) => console.log('answered '+ number)} />
     </div>;
   }
 });

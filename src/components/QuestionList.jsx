@@ -7,11 +7,11 @@ export default React.createClass({
   render: function() {
     return <div>
       <h2>Question list</h2>
-      <ul>
-      {this.getList().map(q =>
-        <li>{q.question}</li>
+      <div>
+      {this.getList().map(q => <div>
+        {q.question}</div>
       )}
-      </ul>
+      </div>
     </div>;
   }
 });
