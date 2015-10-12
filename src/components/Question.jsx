@@ -5,7 +5,7 @@ export default React.createClass({
     return <div className="questionBox">
         <div className="questionTitle">{this.props.question.questionText}</div>
         <div className="answerBox">
-          <ul>
+          <ul className="listOptions">
             {this.props.question.possibleAnswers.map(
               (option, optionIndex) =>
                 <li
@@ -20,5 +20,3 @@ export default React.createClass({
       </div>
   }
 });
-
-const styles = {};
