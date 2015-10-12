@@ -1,4 +1,5 @@
-import React from 'react/addons';
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
 import QuestionList from '../../src/components/QuestionList';
 import {expect} from 'chai';
 
@@ -8,11 +9,11 @@ const {
         isDOMComponent,
         Simulate,
         scryRenderedDOMComponentsWithTag
-      } = React.addons.TestUtils;
+      } = TestUtils;
 
 function scryRenderedDOMComponentsWithClassName(tree, className) {
   return findAllInRenderedTree(tree, function(inst) {
-    return isDOMComponent(inst) && inst.props.className === className;
+    return isDOMComponent(inst) && inst.getAttribute('class') === className;
   });
 }
 
@@ -41,11 +42,16 @@ describe('QuestionList', () => {
         list={questionListData} />
     );
 
-    const divItems = scryRenderedDOMComponentsWithClassName(component, 'questionTitle');
+    const divTitles = scryRenderedDOMComponentsWithClassName(component, 'questionTitle');
+    const liOptions = scryRenderedDOMComponentsWithTag(component, 'li');
 
-    expect(divItems.length).to.equal(2);
-    expect(divItems[0].textContent).to.equal('Question 1');
-    expect(divItems[1].textContent).to.equal('Question 2');
+    expect(divTitles.length).to.equal(2);
+    expect(divTitles[0].textContent).to.equal('Question 1');
+    expect(divTitles[1].textContent).to.equal('Question 2');
+
+    // 6 possible answers for 2 questions
+    expect(liOptions.length).to.equal(6);
+
   });
 
 
@@ -60,10 +66,13 @@ describe('QuestionList', () => {
         onAnswer={callback} />
     );
 
-    const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
-    Simulate.click(buttons[0]);
+    const liOptions = scryRenderedDOMComponentsWithTag(component, 'li');
 
+    Simulate.click(liOptions[2]);
     expect(answered).to.equal(3);
+
+    Simulate.click(liOptions[3]);
+    expect(answered).to.equal(1);
 
   });
 
