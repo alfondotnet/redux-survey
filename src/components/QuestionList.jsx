@@ -1,4 +1,5 @@
 import React from 'react';
+import Question from './Question';
 
 export default React.createClass({
   getList: function() {
@@ -11,22 +12,12 @@ export default React.createClass({
     return <div>
       <h2>Question list</h2>
       <div>
-      {qList.map((q, questionIndex) => <div key={'question_'+ questionIndex} className="questionBox">
-        <div className="questionTitle">{q.question}</div>
-        <div className="answerBox">
-          <ul>
-            {q.possibleAnswers.map(
-              (option, optionIndex) =>
-                <li
-                  key={'option_' + optionIndex}
-                  className="answerOption"
-                  onClick={() => this.props.onAnswer(questionIndex,option)}>
-                  {option}
-                </li>
-            )}
-          </ul>
-        </div>
-      </div>
+      {qList.map((q, questionIndex) =>
+        <Question
+          key={'question_'+questionIndex}
+          questionIndex={questionIndex}
+          question={q}
+          onAnswer={this.props.onAnswer} />
       )}
       </div>
     </div>;
