@@ -5,17 +5,26 @@ export default React.createClass({
     return this.props.list || [];
   },
   render: function() {
+
+    const qList = this.getList();
+
     return <div>
       <h2>Question list</h2>
       <div>
-      {this.getList().map((q, i) => <div className="questionBox">
+      {qList.map((q, questionIndex) => <div key={'question_'+ questionIndex} className="questionBox">
         <div className="questionTitle">{q.question}</div>
         <div className="answerBox">
-          <button
-            key={"answer"+q}
-            onClick={() => this.props.onAnswer(i,3)}>
-            Answer
-          </button>
+          <ul>
+            {q.possibleAnswers.map(
+              (option, optionIndex) =>
+                <li
+                  key={'option_' + optionIndex}
+                  className="answerOption"
+                  onClick={() => this.props.onAnswer(questionIndex,option)}>
+                  {option}
+                </li>
+            )}
+          </ul>
         </div>
       </div>
       )}
