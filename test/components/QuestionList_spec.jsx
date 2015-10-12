@@ -4,8 +4,16 @@ import {expect} from 'chai';
 
 const {
         renderIntoDocument,
-        scryRenderedDOMComponentsWithTag
+        scryRenderedDOMComponentsWithTag,
+        findAllInRenderedTree,
+        isDOMComponent
       } = React.addons.TestUtils;
+
+function scryRenderedDOMComponentsWithClassName(tree, className) {
+  return findAllInRenderedTree(tree, function(inst) {
+    return isDOMComponent(inst) && inst.props.className === className;
+  });
+}
 
 describe('QuestionList', () => {
   it('renders a pair of questions', () => {
@@ -24,11 +32,11 @@ describe('QuestionList', () => {
                            }]} />
     );
 
-    const divItems = scryRenderedDOMComponentsWithTag(component, 'div');
+    const divItems = scryRenderedDOMComponentsWithClassName(component, 'question');
 
-    expect(divItems.length).to.equal(4);
-    expect(divItems[2].textContent).to.equal('Question 1');
-    expect(divItems[3].textContent).to.equal('Question 2');
+    expect(divItems.length).to.equal(2);
+    expect(divItems[0].textContent).to.equal('Question 1');
+    expect(divItems[1].textContent).to.equal('Question 2');
   });
 
 });

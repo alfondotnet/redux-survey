@@ -8,7 +8,7 @@ export default React.createClass({
     return <div>
       <h2>Question list</h2>
       <div>
-      {this.getList().map(q => <div>
+      {this.getList().map(q => <div className="question">
         {q.question}</div>
       )}
       </div>
