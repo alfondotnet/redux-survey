@@ -10,7 +10,16 @@ const {
 describe('QuestionList', () => {
   it('renders a pair of questions', () => {
     const component = renderIntoDocument(
-      <QuestionList list={['Question 1', 'Question 2']} />
+      <QuestionList list={[{
+                            question: 'Question 1',
+                            score: null,
+                            extraPoints: 1,
+                           },
+                           {
+                            question: 'Question 2',
+                            score: null,
+                            extraPoints: 2,
+                           }]} />
     );
 
     const liItems = scryRenderedDOMComponentsWithTag(component, 'li');

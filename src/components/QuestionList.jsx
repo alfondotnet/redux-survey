@@ -8,8 +8,8 @@ export default React.createClass({
     return <div>
       <h2>Question list</h2>
       <ul>
-      {this.getList().map(question =>
-        <li>{question}</li>
+      {this.getList().map(q =>
+        <li>{q.question}</li>
       )}
       </ul>
     </div>;

@@ -1,12 +1,25 @@
 import React from 'react';
 import QuestionList from './QuestionList';
 
-const listQuestions = ['Question 1', 'Question 2'];
+const initialState = {
+                      questionList: [
+                        {
+                          question: 'Question 1',
+                          score: null,
+                          extraPoints: 1,
+                        },
+                        {
+                          question: 'Question 2',
+                          score: null,
+                          extraPoints: 2,
+                        }
+                      ]
+                    };
 
 export default React.createClass({
   render: function() {
     return <div className="app">
-      <QuestionList list={listQuestions} />
+      <QuestionList list={initialState.questionList} />
     </div>;
   }
 });
