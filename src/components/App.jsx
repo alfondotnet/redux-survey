@@ -5,15 +5,15 @@ const initialState = {
                       questionList: [
                         {
                           question: 'Question 1',
-                          score: null,
+                          answer: null,
                           possibleAnswers: [1,2,3],
-                          extraPoints: 1,
+                          getScore: function(score) { return score; }
                         },
                         {
                           question: 'Question 2',
-                          score: null,
+                          answer: null,
                           possibleAnswers: [1,2,3],
-                          extraPoints: 2,
+                          getScore: function(score) { return score + 1; }
                         }
                       ]
                     };
