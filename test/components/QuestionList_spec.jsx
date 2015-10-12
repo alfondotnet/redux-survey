@@ -31,7 +31,7 @@ describe('QuestionList', () => {
                            }]} />
     );
 
-    const divItems = scryRenderedDOMComponentsWithClassName(component, 'question');
+    const divItems = scryRenderedDOMComponentsWithClassName(component, 'questionTitle');
 
     expect(divItems.length).to.equal(2);
     expect(divItems[0].textContent).to.equal('Question 1');
