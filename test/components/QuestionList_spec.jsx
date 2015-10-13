@@ -21,13 +21,13 @@ function scryRenderedDOMComponentsWithClassName(tree, className) {
 // So we create a Question list of 2 test questions for testing
 const questionListData = [
                     {
-                      question: 'Question 1',
+                      questionText: 'Question 1',
                       answer: null,
                       possibleAnswers: [1,2,3],
                       getScore: function(score) { return score; }
                     },
                     {
-                      question: 'Question 2',
+                      questionText: 'Question 2',
                       answer: null,
                       possibleAnswers: [1,2,3],
                       getScore: function(score) { return score + 1; }
@@ -35,6 +35,7 @@ const questionListData = [
                   ];
 
 describe('QuestionList', () => {
+
   it('renders a pair of questions', () => {
 
     const component = renderIntoDocument(
@@ -73,6 +74,20 @@ describe('QuestionList', () => {
 
     Simulate.click(liOptions[3]);
     expect(answered).to.equal(1);
+
+  });
+
+
+  it('renders as a pure component', () => {
+
+    let questionListDataCopy = Object.assign({}, questionListData);
+
+    //console.log(questionListDataCopy === questionListData);
+
+    const component = renderIntoDocument(
+      <QuestionList
+        list={questionListData} />
+    );
 
   });
 
