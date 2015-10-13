@@ -5,12 +5,13 @@ export default React.createClass({
 
     const {question, onAnswer, questionIndex} = this.props;
 
-    if (question.answer === null) {
+    if (question.get('answer') === null) {
+
       return <div className="questionBox">
-          <div className="questionTitle">{question.questionText}</div>
+          <div className="questionTitle">{question.get('questionText')}</div>
           <div className="answerBox">
             <ul className="listOptions">
-              {question.possibleAnswers.map(
+              {question.get('possibleAnswers').map(
                 (option, optionIndex) =>
                   <li
                     key={'option_' + optionIndex}

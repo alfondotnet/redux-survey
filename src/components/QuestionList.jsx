@@ -12,12 +12,14 @@ export default React.createClass({
     return <div>
       <h2>Question list</h2>
       <div>
-      {qList.map((q, questionIndex) =>
-        <Question
+      {qList.map((q, questionIndex) => {
+
+        return <Question
           key={'question_'+questionIndex}
           questionIndex={questionIndex}
           question={q}
           onAnswer={this.props.onAnswer} />
+      }
       )}
       </div>
     </div>;

@@ -37,6 +37,7 @@
   "dependencies": {
     "immutable": "^3.7.5",
     "react": "^0.14.0",
+    "react-addons-pure-render-mixin": "^0.14.0",
     "react-dom": "^0.14.0",
     "winston": "^1.1.0"
   }
