@@ -3,7 +3,7 @@ import Question from './Question';
 import {connect} from 'react-redux';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 
-const QuestionList = React.createClass({
+export const QuestionList = React.createClass({
   mixins: [PureRenderMixin],
 
   getList: function() {
@@ -31,12 +31,9 @@ const QuestionList = React.createClass({
 });
 
 function mapStateToProps(state) {
-  console.log('saasasas');
   return {
     list: state.get('questionList')
   };
 }
 
-connect(mapStateToProps)(QuestionList);
-
-export default QuestionList;
+export const QuestionListContainer = connect(mapStateToProps)(QuestionList);

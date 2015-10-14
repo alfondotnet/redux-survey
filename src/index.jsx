@@ -8,7 +8,7 @@ import {createStore} from 'redux';
 import App from './components/App';
 import {Map,List} from 'immutable';
 import reducer from './reducer';
-import QuestionList from './components/QuestionList';
+import {QuestionListContainer} from './components/QuestionList';
 
 require('./style.css');
 
@@ -38,7 +38,7 @@ store.dispatch({
 });
 
 const routes = <Route component={App}>
-  <Route path="/" component={QuestionList} />
+  <Route path="/" component={QuestionListContainer} />
 </Route>
 
 ReactDOM.render(
