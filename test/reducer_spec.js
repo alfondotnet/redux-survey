@@ -3,20 +3,20 @@ import {expect} from 'chai';
 
 import reducer from '../src/reducer';
 
-const sampleQuestionList = List([
-                        Map({
-                          questionText: 'Question 1',
-                          answer: null,
-                          possibleAnswers: List.of(1,2,3),
-                          getScore: function(score) { return score; }
-                        }),
-                        Map({
-                          questionText: 'Question 2',
-                          answer: null,
-                          possibleAnswers: List.of(1,2,3),
-                          getScore: function(score) { return score + 1; }
-                        })
-                      ]);
+const sampleQuestionList = [
+        {
+          questionText: 'Question 1',
+          answer: null,
+          possibleAnswers: [1,2,3],
+          getScore: function(score) { return score; }
+        },
+        {
+          questionText: 'Question 2',
+          answer: null,
+          possibleAnswers: [1,2,3],
+          getScore: function(score) { return score + 1; }
+        }
+      ];
 
 describe('Reducer', () => {
 
@@ -25,9 +25,9 @@ describe('Reducer', () => {
     const initialState = Map();
     const action = {
       type: 'SET_STATE',
-      state: Map({
+      state: {
         questionList: sampleQuestionList
-      })
+      }
     };
 
     const nextState = reducer(initialState, action);
