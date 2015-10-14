@@ -32,7 +32,8 @@ export const QuestionList = React.createClass({
 
 function mapStateToProps(state) {
   return {
-    list: state.get('questionList')
+    list: state.get('questionList'),
+    onAnswer: function(qi, op) { console.log('answered '+ qi + ' question with answer '+ op); }
   };
 }
 
