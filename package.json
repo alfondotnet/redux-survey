@@ -35,6 +35,7 @@
     "winston": "^1.1.0"
   },
   "dependencies": {
+    "empty": "^0.10.1",
     "immutable": "^3.7.5",
     "react": "^0.14.0",
     "react-addons-pure-render-mixin": "^0.14.0",
