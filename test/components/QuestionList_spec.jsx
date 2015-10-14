@@ -35,8 +35,6 @@ const questionListData = List([
                         })
                       ]);
 
-console.log(questionListData);
-
 describe('QuestionList', () => {
 
   it('renders a pair of questions', () => {
