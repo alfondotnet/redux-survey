@@ -10,7 +10,6 @@ export const QuestionList = React.createClass({
     return this.props.list || [];
   },
   render: function() {
-
     const qList = this.getList();
 
     return <div>

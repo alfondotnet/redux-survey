@@ -7,12 +7,12 @@ import {Provider} from 'react-redux';
 import {createStore} from 'redux';
 import App from './components/App';
 import {Map,List} from 'immutable';
-import reducer from './reducer';
 import {QuestionListContainer} from './components/QuestionList';
+import configureStore from './store/configureStore';
 
 require('./style.css');
 
-const store = createStore(reducer);
+const store = configureStore();
 
 // Later this will come from a json and will use fromJS,
 // maybe even using fromJS in the reducer, though this is still not clear.
