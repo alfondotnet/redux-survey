@@ -16,7 +16,7 @@ class Results extends Component {
   }
 
   render() {
-    return <div><h2>Resultados kisos</h2>
+    return <div><h2>Results</h2>
       {this.renderResults()}
     </div>;
   }
