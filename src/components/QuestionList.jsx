@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react';
+import React,{Component, PropTypes} from 'react';
 import Question from './Question';
 import {connect} from 'react-redux';
 

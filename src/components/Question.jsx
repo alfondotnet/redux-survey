@@ -9,7 +9,6 @@ class Question extends Component {
   }
 
   render() {
-
     const {question, questionIndex} = this.props;
     if (question.get('answer') === null) {
       return <div className="questionBox">
