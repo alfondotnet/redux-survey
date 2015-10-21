@@ -1,12 +1,17 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
+import {answer} from '../actions/question';
 
-export default React.createClass({
-  render: function() {
+class Question extends Component {
 
-    const {question, onAnswer, questionIndex} = this.props;
+  answer(option) {
+    const {dispatch, questionIndex} = this.props;
+    dispatch(answer(questionIndex, option));
+  }
 
+  render() {
+
+    const {question, questionIndex} = this.props;
     if (question.get('answer') === null) {
-
       return <div className="questionBox">
           <div className="questionTitle">{question.get('questionText')}</div>
           <div className="answerBox">
@@ -16,7 +21,7 @@ export default React.createClass({
                   <li
                     key={'option_' + optionIndex}
                     className="answerOption"
-                    onClick={() => onAnswer(questionIndex,option)}>
+                    onClick={() => this.answer(option)}>
                     {option}
                   </li>
               )}
@@ -27,4 +32,12 @@ export default React.createClass({
       return null;
     }
   }
-});
+}
+
+Question.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  question: PropTypes.object.isRequired,
+  questionIndex: PropTypes.number.isRequired
+};
+
+export default Question;

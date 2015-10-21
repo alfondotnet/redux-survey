@@ -5,10 +5,7 @@ import {connect} from 'react-redux';
 class QuestionList extends Component {
 
   render() {
-
-    console.log(this.props);
-
-    const {list,onAnswer} = this.props;
+    const {list, dispatch} = this.props;
 
     return <div>
       <h2>Question list</h2>
@@ -18,7 +15,7 @@ class QuestionList extends Component {
           key={'question_'+questionIndex}
           questionIndex={questionIndex}
           question={q}
-          onAnswer={onAnswer} />
+          dispatch={dispatch} />
       }
       )}
       </div>
@@ -28,7 +25,7 @@ class QuestionList extends Component {
 
 QuestionList.propTypes = {
   list: PropTypes.object.isRequired,
-  onAnswer: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
 };
 
 export default QuestionList;

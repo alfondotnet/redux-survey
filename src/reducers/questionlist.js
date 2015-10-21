@@ -2,11 +2,15 @@ import * as types from '../constants/ActionTypes';
 import {Map, fromJS} from 'immutable';
 import initialQuestionList from '../fixtures/sample';
 
-// this reducer sets the initial state
-export function initQuestionList(state, action) {
+export function questionList(state = Map({questionList: fromJS(initialQuestionList)}), action) {
+  switch(action.type) {
+    case types.ANSWER_QUESTION:
+      const qList = state.get('questionList');
+      const questionToUpdate = qList.get(action.answer.questionIndex);
+      const updatedState = state.set('questionList', qList.set(action.answer.questionIndex, questionToUpdate.set('answer', questionToUpdate.get('getScore')(action.answer.option))));
 
-  if(typeof state === 'undefined') {
-    return Map({questionList: fromJS(initialQuestionList)});
+      return updatedState;
+    default:
+      return state;
   }
-  return state;
 }

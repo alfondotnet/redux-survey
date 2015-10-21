@@ -9,6 +9,6 @@ export default [
           questionText: 'Question 2',
           answer: null,
           possibleAnswers: [1,2,3],
-          getScore: function(score) { return score + 1; }
+          getScore: function(score) { return score * 1000; }
         }
 ];

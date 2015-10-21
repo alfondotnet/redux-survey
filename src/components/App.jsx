@@ -5,16 +5,11 @@ import QuestionList from './QuestionList';
 
 class App extends Component {
 
-  componentWillMount() {
-  }
-
   render() {
-
     const {dispatch, list, onAnswer} = this.props;
     return <QuestionList
             dispatch={dispatch}
-            list={list}
-            onAnswer={onAnswer} />;
+            list={list} />;
   }
 }
 
@@ -23,13 +18,10 @@ App.propTypes = {
 };
 
 function mapStateToProps(state) {
-
-  const {initQuestionList} = state;
+  const {questionList} = state;
 
   return {
-    list: initQuestionList.get('questionList'),
-    // migrate below to action
-    onAnswer: function(qi, op) { console.log('answered '+ qi + ' question with answer '+ op); }
+    list: questionList.get('questionList'),
   };
 }
 

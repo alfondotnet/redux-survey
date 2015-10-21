@@ -1,9 +1,9 @@
 import {Map} from 'immutable';
 import {combineReducers} from 'redux';
-import {initQuestionList} from './questionlist';
+import {questionList} from './questionlist';
 
 const rootReducer = combineReducers({
-  initQuestionList
+  questionList
 });
 
 export default rootReducer;
