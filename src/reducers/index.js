@@ -1,15 +1,9 @@
 import {Map} from 'immutable';
+import {combineReducers} from 'redux';
+import {initQuestionList} from './questionlist';
 
-function setState(state, newState) {
-  return state.merge(newState);
-}
+const rootReducer = combineReducers({
+  initQuestionList
+});
 
-// this is to combine all the reducers
-
-export default function(state = Map(), action) {
-  switch (action.type) {
-    case 'SET_STATE':
-      return setState(state, action.state)
-  }
-  return state;
-}
+export default rootReducer;

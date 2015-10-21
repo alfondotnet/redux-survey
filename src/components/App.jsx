@@ -4,7 +4,12 @@ import {List,Map} from 'immutable';
 import QuestionList from './QuestionList';
 
 class App extends Component {
+
+  componentWillMount() {
+  }
+
   render() {
+
     const {dispatch, list, onAnswer} = this.props;
     return <QuestionList
             dispatch={dispatch}
@@ -18,8 +23,11 @@ App.propTypes = {
 };
 
 function mapStateToProps(state) {
+
+  const {initQuestionList} = state;
+
   return {
-    list: state.get('questionList'),
+    list: initQuestionList.get('questionList'),
     // migrate below to action
     onAnswer: function(qi, op) { console.log('answered '+ qi + ' question with answer '+ op); }
   };

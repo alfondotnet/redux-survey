@@ -6,6 +6,8 @@ class QuestionList extends Component {
 
   render() {
 
+    console.log(this.props);
+
     const {list,onAnswer} = this.props;
 
     return <div>
