@@ -1,8 +1,5 @@
-/* @flow */
-
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Router, {Route} from 'react-router';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
 import App from './components/App';
@@ -14,9 +11,7 @@ require('./style.css');
 
 const store = configureStore();
 
-// Later this will come from a json and will use fromJS,
-// maybe even using fromJS in the reducer, though this is still not clear.
-
+// Move this to onComponentDidMount of App
 store.dispatch({
   type: 'SET_STATE',
   state: {
@@ -37,13 +32,9 @@ store.dispatch({
     }
 });
 
-const routes = <Route component={App}>
-  <Route path="/" component={QuestionListContainer} />
-</Route>
-
 ReactDOM.render(
   <Provider store={store}>
-    <Router>{routes}</Router>
+    <App />
   </Provider>,
   document.getElementById('app')
 );

@@ -1,39 +1,32 @@
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
 import Question from './Question';
 import {connect} from 'react-redux';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
 
-export const QuestionList = React.createClass({
-  mixins: [PureRenderMixin],
+class QuestionList extends Component {
 
-  getList: function() {
-    return this.props.list || [];
-  },
-  render: function() {
-    const qList = this.getList();
+  render() {
+
+    const {list,onAnswer} = this.props;
 
     return <div>
       <h2>Question list</h2>
       <div>
-      {qList.map((q, questionIndex) => {
-
+      {list.map((q, questionIndex) => {
         return <Question
           key={'question_'+questionIndex}
           questionIndex={questionIndex}
           question={q}
-          onAnswer={this.props.onAnswer} />
+          onAnswer={onAnswer} />
       }
       )}
       </div>
     </div>;
   }
-});
-
-function mapStateToProps(state) {
-  return {
-    list: state.get('questionList'),
-    onAnswer: function(qi, op) { console.log('answered '+ qi + ' question with answer '+ op); }
-  };
 }
 
-export const QuestionListContainer = connect(mapStateToProps)(QuestionList);
+QuestionList.propTypes = {
+  list: PropTypes.object.isRequired,
+  onAnswer: PropTypes.func.isRequired
+};
+
+export default QuestionList;
