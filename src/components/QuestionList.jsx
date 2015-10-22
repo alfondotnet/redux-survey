@@ -1,6 +1,7 @@
 import React,{Component, PropTypes} from 'react';
 import Question from './Question';
 import {connect} from 'react-redux';
+import {Panel, Row, Col} from 'react-bootstrap';
 
 class QuestionList extends Component {
 
@@ -33,7 +34,7 @@ class QuestionList extends Component {
 
     if (this.countAnswered() === list.size)
     {
-      return 'No more questions';
+      return <Col xs={12} md={12}><Panel>No more questions</Panel></Col>;
     } else {
       return list.map((q, questionIndex) => {
         return <Question
@@ -50,9 +51,9 @@ class QuestionList extends Component {
 
     return <div>
       <h2>Question list</h2>
-      <div className="row">
+      <Row>
         {this.renderListQuestions()}
-      </div>
+      </Row>
     </div>;
   }
 }
