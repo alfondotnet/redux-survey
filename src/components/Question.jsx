@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {answer} from '../actions/question';
+import {Panel, Button, ButtonGroup} from 'react-bootstrap';
 
 class Question extends Component {
 
@@ -11,21 +12,21 @@ class Question extends Component {
   render() {
     const {question, questionIndex} = this.props;
     if (question.get('answer') === null) {
-      return <div className="questionBox">
-          <div className="questionTitle">{question.get('questionText')}</div>
-          <div className="answerBox">
-            <ul className="listOptions">
+      return <div className="col-md-3">
+          <Panel header={<h3>{question.get('questionText')}</h3>}>
+            <div>
+            <ButtonGroup>
               {question.get('possibleAnswers').map(
                 (option, optionIndex) =>
-                  <li
+                  <Button
                     key={'option_' + optionIndex}
-                    className="answerOption"
                     onClick={() => this.answer(option)}>
                     {option}
-                  </li>
+                  </Button>
               )}
-            </ul>
-          </div>
+            </ButtonGroup>
+            </div>
+          </Panel>
         </div>
     } else {
       return null;

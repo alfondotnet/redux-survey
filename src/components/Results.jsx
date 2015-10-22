@@ -5,7 +5,7 @@ class Results extends Component {
   renderResults() {
     const {list} = this.props;
 
-    const totalValue = list.map(q => q.get('answer')).reduce((prev,curr) => prev + curr);
+    const totalValue = list.map(q => q.get('answer')).reduce((prev,curr) => { console.log(prev); return prev + curr;});
 
     return <div>
       Total value: {totalValue}

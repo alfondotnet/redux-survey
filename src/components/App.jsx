@@ -7,7 +7,7 @@ import Results from './Results';
 class App extends Component {
   render() {
     const {dispatch, list, onAnswer} = this.props;
-    return <div>
+    return <div className="container">
             <QuestionList
               dispatch={dispatch}
               list={list} />

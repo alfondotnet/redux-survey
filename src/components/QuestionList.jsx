@@ -9,7 +9,7 @@ class QuestionList extends Component {
 
     return <div>
       <h2>Question list</h2>
-      <div>
+      <div className="row">
       {list.map((q, questionIndex) => {
         return <Question
           key={'question_'+questionIndex}

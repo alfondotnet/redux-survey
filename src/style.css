@@ -1,23 +1,4 @@
-body {
-   font-family: 'Arial', sans-serif;
-   background-color: #fff;
-   color: black;
-}
-.questionBox {
-  background-color: #bbb;
-}
-.answerBox {
-  overflow: auto;
-}
-.listOptions {
-  display: block;
-}
-.listOptions li{
-  display: inline;
-  border: 1px solid black;
-  margin: 10px;
-  padding: 10px;
-}
-.listOptions li:hover{
-  background-color: #fff;
+.question-box {
+  margin: 1em;
+  padding: 0;
 }
