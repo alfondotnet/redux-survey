@@ -8,8 +8,8 @@ const questionList = questions.map(i => {
         return {
           questionText: i,
           answer: null,
-          possibleAnswers: [0,1,2,3],
-          getScore: function(score) { return score; }
+          possibleAnswers: ['yay','noes'],
+          getScore: function(ans) { return (ans === 'yay') ? 1 : 0; }
         }});
 
 export default questionList;
