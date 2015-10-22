@@ -3,11 +3,9 @@ import React,{Component, PropTypes} from 'react';
 class Results extends Component {
 
   renderResults() {
-
     const {list} = this.props;
 
-    // assumming we are adding up the answers!
-    const totalValue = list.reduce((prev, curr) => prev.get('answer') + curr.get('answer'));
+    const totalValue = list.map(q => q.get('answer')).reduce((prev,curr) => prev + curr);
 
     return <div>
       Total value: {totalValue}

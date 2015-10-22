@@ -3,6 +3,7 @@ import {Map, fromJS} from 'immutable';
 import initialQuestionList from '../fixtures/sample';
 
 export function questionList(state = Map({questionList: fromJS(initialQuestionList)}), action) {
+
   switch(action.type) {
     case types.ANSWER_QUESTION:
       const qList = state.get('questionList');
