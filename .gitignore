@@ -41,6 +41,7 @@ xcuserdata
 node_modules
 bower_components
 logs
+src/fixtures/sample.js
 
 lib/
 example/output/
