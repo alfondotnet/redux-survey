@@ -1,11 +1,12 @@
 import React,{Component, PropTypes} from 'react';
+import {Panel} from 'react-bootstrap';
 
 class Results extends Component {
 
   renderResults() {
-    const {list} = this.props;
 
-    const totalValue = list.map(q => q.get('answer')).reduce((prev,curr) => { console.log(prev); return prev + curr;});
+    const {list} = this.props;
+    const totalValue = list.map(q => q.get('answer')).reduce((reduction,value) => reduction + value);
 
     return <div>
       Total value: {totalValue}
@@ -14,8 +15,9 @@ class Results extends Component {
   }
 
   render() {
-    return <div><h2>Results</h2>
+    return <div><h2>Results</h2><Panel header={<h3>All results</h3>}>
       {this.renderResults()}
+    </Panel>
     </div>;
   }
 }

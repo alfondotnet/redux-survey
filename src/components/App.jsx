@@ -8,10 +8,10 @@ class App extends Component {
   render() {
     const {dispatch, list, onAnswer} = this.props;
     return <div className="container">
-            <QuestionList
+            <Results
               dispatch={dispatch}
               list={list} />
-            <Results
+            <QuestionList
               dispatch={dispatch}
               list={list} />
             </div>;
