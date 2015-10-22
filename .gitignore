@@ -41,7 +41,7 @@ xcuserdata
 node_modules
 bower_components
 logs
-src/fixtures/sample.js
+src/fixtures/sampleHorowitz.js
 
 lib/
 example/output/
