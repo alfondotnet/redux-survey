@@ -4,7 +4,6 @@ import {Panel} from 'react-bootstrap';
 class Results extends Component {
 
   renderResults() {
-
     const {list} = this.props;
     const totalValue = list.map(q => q.get('answer')).reduce((reduction,value) => reduction + value);
 
