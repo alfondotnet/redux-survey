@@ -10,7 +10,6 @@ class Results extends Component {
     return <div>
       Total value: {totalValue}
     </div>;
-
   }
 
   render() {

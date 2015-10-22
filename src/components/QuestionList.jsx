@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 
 class QuestionList extends Component {
 
-
   signAnswer(ans) {
     if (ans === null) {
       return null;
@@ -24,7 +23,8 @@ class QuestionList extends Component {
   countAnswered() {
     const {list} = this.props;
     return list.skip(1).map(q => q.get('answer'))
-               .reduce((red,val) => this.sumNotCoercion(red,this.signAnswer(val)), this.signAnswer(list.first().get('answer')));
+               .reduce((red,val) => this.sumNotCoercion(red,this.signAnswer(val)),
+                       this.signAnswer(list.first().get('answer')));
   }
 
   renderListQuestions() {
