@@ -9,7 +9,7 @@ class Results extends Component {
     const buttons = list.filter(q => q.get('answer') !== null)
                .map((aq,k) => <Col key={'ansq_'+ k} lg={2} md={4} xs={4}>
       <Button
-        onClick={() => console.log(k + 'button clicked')}>
+        onClick={() => dispatch(answer(k,null))}>
         {aq.get('questionText')} -> {aq.get('possibleAnswers').get(aq.get('answer'))}
       </Button>
     </Col>).toList();
@@ -34,6 +34,7 @@ class Results extends Component {
   }
 
   render() {
+
     if (this.answeredQuestions().size > 0) {
       return <Row>
       <Col xs={12} md={12} lg={12}>
