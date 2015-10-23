@@ -5,7 +5,6 @@ import {answer} from '../actions/question';
 class Results extends Component {
 
   answeredQuestions() {
-
     const {list,dispatch} = this.props;
     const buttons = list.filter(q => q.get('answer') !== null)
                .map((aq,k) => <Col key={'ansq_'+ k} lg={2} md={4} xs={4}>
