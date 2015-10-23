@@ -42,7 +42,7 @@ class QuestionList extends Component {
           questionIndex={questionIndex}
           question={q}
           dispatch={dispatch} />
-      });
+      }).toList();
     }
   }
 

@@ -35,7 +35,7 @@ class Question extends Component {
 Question.propTypes = {
   dispatch: PropTypes.func.isRequired,
   question: PropTypes.object.isRequired,
-  questionIndex: PropTypes.number.isRequired
+  questionIndex: PropTypes.string.isRequired
 };
 
 export default Question;
