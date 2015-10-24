@@ -1,7 +1,7 @@
 const questions = [
-'Are do dumb?',
-'Ya wanna get down with me babe?',
-'Huh?'
+'question 1',
+'This is another loooooooooooooong question',
+'QuEstion 3, éxample'
 ];
 
 const questionList = questions.reduce((o, v, i) => {
