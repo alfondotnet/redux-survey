@@ -5,6 +5,11 @@ import QuestionList from './QuestionList';
 import Results from './Results';
 
 class App extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired
+  };
+
   render() {
     const {dispatch, list, onAnswer} = this.props;
     return <div className="container">
@@ -17,10 +22,6 @@ class App extends Component {
             </div>;
   }
 }
-
-App.propTypes = {
-  dispatch: PropTypes.func.isRequired
-};
 
 function mapStateToProps(state) {
   const {questionList} = state;

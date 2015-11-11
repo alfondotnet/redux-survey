@@ -5,6 +5,11 @@ import {Panel, Row, Col} from 'react-bootstrap';
 
 class QuestionList extends Component {
 
+  static propTypes = {
+    list: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired,
+  };
+
   signAnswer(ans) {
     if (ans === null) {
       return null;
@@ -57,10 +62,5 @@ class QuestionList extends Component {
     </div>;
   }
 }
-
-QuestionList.propTypes = {
-  list: PropTypes.object.isRequired,
-  dispatch: PropTypes.func.isRequired,
-};
 
 export default QuestionList;

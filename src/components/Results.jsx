@@ -4,6 +4,11 @@ import {answer} from '../actions/question';
 
 class Results extends Component {
 
+  static propTypes = {
+    list: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired,
+  };
+
   answeredQuestions() {
     const {list,dispatch} = this.props;
     const buttons = list.filter(q => q.get('answer') !== null)
@@ -16,7 +21,6 @@ class Results extends Component {
     </Col>).toList();
 
     return buttons;
-
   }
 
   renderResults() {
@@ -35,7 +39,6 @@ class Results extends Component {
   }
 
   render() {
-
     if (this.answeredQuestions().size > 0) {
       return <Row>
       <Col xs={12} md={12} lg={12}>
@@ -50,10 +53,5 @@ class Results extends Component {
     }
   }
 }
-
-Results.propTypes = {
-  list: PropTypes.object.isRequired,
-  dispatch: PropTypes.func.isRequired,
-};
 
 export default Results;
