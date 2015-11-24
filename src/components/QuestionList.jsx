@@ -2,6 +2,8 @@ import React,{Component, PropTypes} from 'react';
 import Question from './Question';
 import {connect} from 'react-redux';
 import {Panel, Row, Col} from 'react-bootstrap';
+import * as stepsTypes from '../constants/Steps';
+import {changeStep} from '../actions/ui';
 
 class QuestionList extends Component {
 
@@ -39,7 +41,7 @@ class QuestionList extends Component {
 
     if (this.countAnswered() === list.size)
     {
-      return <Col xs={12} md={12}><Panel>No more questions</Panel></Col>;
+      return <Col xs={12} md={12}><Panel onClick={() => dispatch(changeStep(stepsTypes.RESULTS))}>View results</Panel></Col>;
     } else {
       return list.map((q, questionIndex) => {
         return <Question
