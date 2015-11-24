@@ -12,6 +12,16 @@ class App extends Component {
     dispatch: PropTypes.func.isRequired
   };
 
+  renderHeader() {
+    const {step} = this.props;
+    return <div
+            className='well'>
+              <span style={{fontWeight: step === stepsTypes.INTRODUCTION ? 'bold' : 'normal'}}>Introduction</span> >&nbsp;
+              <span style={{fontWeight: step === stepsTypes.QUESTIONS ? 'bold' : 'normal'}}>Questions</span> >&nbsp;
+              <span style={{fontWeight: step === stepsTypes.RESULTS ? 'bold' : 'normal'}}>Results</span>
+           </div>;
+  }
+
   renderSection() {
     const {list, step, dispatch} = this.props;
 
@@ -35,6 +45,7 @@ class App extends Component {
   render() {
     const {dispatch, list, onAnswer} = this.props;
     return <div className="container">
+            {this.renderHeader()}
             {this.renderSection()}
            </div>;
   }
