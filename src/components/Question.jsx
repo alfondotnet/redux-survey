@@ -5,10 +5,12 @@ import {Panel, Button, ButtonGroup, Col} from 'react-bootstrap';
 class Question extends Component {
 
   static propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  question: PropTypes.object.isRequired,
-  questionIndex: PropTypes.string.isRequired
+    dispatch: PropTypes.func.isRequired,
+    question: PropTypes.object.isRequired,
+    questionIndex: PropTypes.string.isRequired
   };
+
+  _answer = (e) => this.answer(parseInt(e.target.textContent));
 
   answer(option) {
     const {dispatch, questionIndex} = this.props;
@@ -25,7 +27,7 @@ class Question extends Component {
                 (option, optionIndex) =>
                   <Button
                     key={'option_' + optionIndex}
-                    onClick={this.answer.bind(this, option)}>
+                    onClick={this._answer}>
                     {option}
                   </Button>
               )}
