@@ -2,14 +2,11 @@ import React,{Component, PropTypes} from 'react';
 import Question from './Question';
 import {connect} from 'react-redux';
 import {Panel, Row, Col} from 'react-bootstrap';
-import * as stepsTypes from '../constants/Steps';
-import {changeStep} from '../actions/ui';
 
 class QuestionList extends Component {
 
   static propTypes = {
-    list: PropTypes.object.isRequired,
-    dispatch: PropTypes.func.isRequired,
+    //list: PropTypes.object.isRequired,
   };
 
   signAnswer(ans) {
@@ -36,25 +33,24 @@ class QuestionList extends Component {
   }
 
   renderListQuestions() {
-
-    const {list, dispatch} = this.props;
+    const {list, actions} = this.props;
 
     if (this.countAnswered() === list.size)
     {
-      return <Col xs={12} md={12}><Panel onClick={() => dispatch(changeStep(stepsTypes.RESULTS))}>View results</Panel></Col>;
+      return <Col xs={12} md={12}><Panel>View results</Panel></Col>;
     } else {
       return list.map((q, questionIndex) => {
         return <Question
           key={'question_'+questionIndex}
           questionIndex={questionIndex}
           question={q}
-          dispatch={dispatch} />
+          actions={actions} />
       }).toList();
     }
   }
 
   render() {
-    const {list, dispatch} = this.props;
+    const {list} = this.props;
 
     return <div>
       <h2>Question list</h2>

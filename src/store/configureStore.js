@@ -1,8 +1,5 @@
-import {createStore} from 'redux';
-import reducer from '../reducers/index';
-
-export default function configureStore(initialState) {
-  // have to apply middleware, check thunk
-  const store = createStore(reducer);
-  return store;
+if (process.env.NODE_ENV === 'production') {
+  module.exports = require('./configureStore.prod');
+} else {
+  module.exports = require('./configureStore.dev');
 }

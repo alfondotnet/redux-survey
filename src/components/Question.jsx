@@ -1,11 +1,8 @@
 import React, {Component, PropTypes} from 'react';
-import {answer} from '../actions/question';
 import {Panel, Button, ButtonGroup, Col} from 'react-bootstrap';
 
 class Question extends Component {
-
   static propTypes = {
-    dispatch: PropTypes.func.isRequired,
     question: PropTypes.object.isRequired,
     questionIndex: PropTypes.string.isRequired
   };
@@ -13,8 +10,11 @@ class Question extends Component {
   _answer = (e) => this.answer(parseInt(e.target.textContent));
 
   answer(option) {
-    const {dispatch, questionIndex} = this.props;
-    dispatch(answer(questionIndex, option));
+    const {questionIndex, actions} = this.props;
+
+    console.log(actions.answer);
+
+    actions.answer(questionIndex, option);
   }
 
   render() {
