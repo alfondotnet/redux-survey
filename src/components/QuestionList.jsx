@@ -1,12 +1,16 @@
 import React,{Component, PropTypes} from 'react';
 import Question from './Question';
 import {connect} from 'react-redux';
+import { Link } from 'react-router';
 import {Panel, Row, Col} from 'react-bootstrap';
 
 class QuestionList extends Component {
 
   static propTypes = {
-    //list: PropTypes.object.isRequired,
+    // list is set to optional as this component is created with cloneElement so isRequired would show a
+    // warning, this can be done with the help of contexts
+    // https://github.com/facebook/react/issues/4494
+    list: PropTypes.object,
   };
 
   signAnswer(ans) {
@@ -37,7 +41,7 @@ class QuestionList extends Component {
 
     if (this.countAnswered() === list.size)
     {
-      return <Col xs={12} md={12}><Panel>View results</Panel></Col>;
+      return <Col xs={12} md={12}><Panel><Link to='/results'>View results</Link></Panel></Col>;
     } else {
       return list.map((q, questionIndex) => {
         return <Question

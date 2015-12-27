@@ -5,16 +5,15 @@ import {answer} from '../actions/question';
 class Results extends Component {
 
   static propTypes = {
-    list: PropTypes.object.isRequired,
-    dispatch: PropTypes.func.isRequired,
+    list: PropTypes.object
   };
 
   answeredQuestions() {
-    const {list,dispatch} = this.props;
+    const {list, actions} = this.props;
     const buttons = list.filter(q => q.get('answer') !== null)
                .map((aq,k) => <Col key={'ansq_'+ k} lg={4} md={4} xs={12}>
       <Button
-        onClick={() => dispatch(answer(k,null))}>
+        onClick={() => actions.answer(k,null)}>
         <p><strong>{aq.get('questionText')}</strong></p>
         <p>{aq.get('possibleAnswers').get(aq.get('answer'))}</p>
       </Button>

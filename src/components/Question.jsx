@@ -11,9 +11,6 @@ class Question extends Component {
 
   answer(option) {
     const {questionIndex, actions} = this.props;
-
-    console.log(actions.answer);
-
     actions.answer(questionIndex, option);
   }
 
