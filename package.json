@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "empty": "^0.10.1",
+    "history": "^1.17.0",
     "immutable": "^3.7.5",
     "react": "^0.14.0",
     "react-bootstrap": "^0.27.2",
