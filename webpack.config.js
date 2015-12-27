@@ -7,6 +7,7 @@ module.exports = {
     'webpack/hot/only-dev-server',
     './src/index.jsx'
   ],
+  devtool: 'source-map',
   module: {
     loaders: [{
       test: /\.jsx?$/,
