@@ -15,7 +15,6 @@ class App extends Component {
   };
 
   render() {
-
     const { dispatch, list, onAnswer, children, actions } = this.props;
 
     return <div className="container">

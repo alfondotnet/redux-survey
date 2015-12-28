@@ -2,7 +2,7 @@ import React,{Component, PropTypes} from 'react';
 import Question from './Question';
 import {connect} from 'react-redux';
 import { Link } from 'react-router';
-import {Panel, Row, Col} from 'react-bootstrap';
+import {Panel, Row, Col, ProgressBar} from 'react-bootstrap';
 
 class QuestionList extends Component {
 
@@ -36,9 +36,27 @@ class QuestionList extends Component {
                        this.signAnswer(list.first().get('answer')));
   }
 
+  countQuestions() {
+    const {list} = this.props;
+    return list.size;
+  }
+
   onAnswerQuestion(option, questionIndex) {
     const {actions} = this.props;
     actions.answer(questionIndex, option);
+  }
+
+  renderProgressBar(percentage) {
+
+    const colorStyle = (percentage === 100) ? "success" : "info";
+
+    return (
+      <ProgressBar
+        max={100}
+        min={0}
+        now={percentage}
+        bsStyle={colorStyle} />
+    );
   }
 
   renderListQuestions() {
@@ -62,6 +80,10 @@ class QuestionList extends Component {
     const {list} = this.props;
 
     return <div>
+      <h2>Percentage completed</h2>
+      <Row>
+        {this.renderProgressBar((this.countAnswered() * 100) / this.countQuestions())}
+      </Row>
       <h2>Question list</h2>
       <Row>
         {this.renderListQuestions()}
