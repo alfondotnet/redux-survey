@@ -36,6 +36,11 @@ class QuestionList extends Component {
                        this.signAnswer(list.first().get('answer')));
   }
 
+  onAnswerQuestion(option, questionIndex) {
+    const {actions} = this.props;
+    actions.answer(questionIndex, option);
+  }
+
   renderListQuestions() {
     const {list, actions} = this.props;
 
@@ -48,7 +53,7 @@ class QuestionList extends Component {
           key={'question_'+questionIndex}
           questionIndex={questionIndex}
           question={q}
-          actions={actions} />
+          onAnswer={(op,qi) => this.onAnswerQuestion(op,qi)} />
       }).toList();
     }
   }

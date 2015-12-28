@@ -4,15 +4,11 @@ import {Panel, Button, ButtonGroup, Col} from 'react-bootstrap';
 class Question extends Component {
   static propTypes = {
     question: PropTypes.object.isRequired,
-    questionIndex: PropTypes.string.isRequired
+    questionIndex: PropTypes.string.isRequired,
+    onAnswer: PropTypes.func.isRequired
   };
 
-  _answer = (e) => this.answer(parseInt(e.target.textContent));
-
-  answer(option) {
-    const {questionIndex, actions} = this.props;
-    actions.answer(questionIndex, option);
-  }
+  _answer = (e) => this.props.onAnswer(parseInt(e.target.textContent), this.props.questionIndex);
 
   render() {
     const {question, questionIndex} = this.props;
