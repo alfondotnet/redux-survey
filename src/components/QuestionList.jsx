@@ -13,34 +13,6 @@ class QuestionList extends Component {
     list: PropTypes.object,
   };
 
-  signAnswer(ans) {
-    if (ans === null) {
-      return null;
-    } else {
-      return 1;
-    }
-  }
-
-  sumNotCoercion(a,b) {
-    if (a === null && b === null) {
-      return null;
-    } else {
-      return a + b;
-    }
-  }
-
-  countAnswered() {
-    const {list} = this.props;
-    return list.skip(1).map(q => q.get('answer'))
-               .reduce((red,val) => this.sumNotCoercion(red,this.signAnswer(val)),
-                       this.signAnswer(list.first().get('answer')));
-  }
-
-  countQuestions() {
-    const {list} = this.props;
-    return list.size;
-  }
-
   onAnswerQuestion(option, questionIndex) {
     const {actions} = this.props;
     actions.answer(questionIndex, option);
@@ -60,9 +32,9 @@ class QuestionList extends Component {
   }
 
   renderListQuestions() {
-    const {list, actions} = this.props;
+    const {list, actions, countAnswered} = this.props;
 
-    if (this.countAnswered() === list.size)
+    if (countAnswered() === list.size)
     {
       return <Col xs={12} md={12}><Panel><Link to='/results'>View results</Link></Panel></Col>;
     } else {
@@ -77,12 +49,12 @@ class QuestionList extends Component {
   }
 
   render() {
-    const {list} = this.props;
+    const {list, countAnswered, countQuestions} = this.props;
 
     return <div>
       <h2>Percentage completed</h2>
       <Row>
-        {this.renderProgressBar((this.countAnswered() * 100) / this.countQuestions())}
+        {this.renderProgressBar((countAnswered() * 100) / countQuestions())}
       </Row>
       <h2>Question list</h2>
       <Row>

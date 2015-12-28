@@ -14,11 +14,44 @@ class App extends Component {
     children: PropTypes.node
   };
 
+  signAnswer(ans) {
+    if (ans === null) {
+      return null;
+    } else {
+      return 1;
+    }
+  }
+
+  sumNotCoercion(a,b) {
+    if (a === null && b === null) {
+      return null;
+    } else {
+      return a + b;
+    }
+  }
+
+  countAnswered() {
+    const {list} = this.props;
+    return list.skip(1).map(q => q.get('answer'))
+               .reduce((red,val) => this.sumNotCoercion(red,this.signAnswer(val)),
+                       this.signAnswer(list.first().get('answer')));
+  }
+
+  countQuestions() {
+    const {list} = this.props;
+    return list.size;
+  }
+
   render() {
     const { dispatch, list, onAnswer, children, actions } = this.props;
 
     return <div className="container">
-            {React.cloneElement(children, {list, actions})}
+            {React.cloneElement(children, {
+                                            list,
+                                            actions,
+                                            countAnswered: () => this.countAnswered(),
+                                            countQuestions: () => this.countQuestions()
+                                          })}
            </div>;
   }
 }

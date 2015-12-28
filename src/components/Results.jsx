@@ -1,6 +1,7 @@
-import React,{Component, PropTypes} from 'react';
-import {Panel, Row, Col, Button} from 'react-bootstrap';
-import {answer} from '../actions/question';
+import React,{ Component, PropTypes } from 'react';
+import { Panel, Row, Col, Button } from 'react-bootstrap';
+import { answer} from '../actions/question';
+import { Link } from 'react-router';
 
 class Results extends Component {
 
@@ -37,14 +38,26 @@ class Results extends Component {
     </Row>;
   }
 
+  linkReview() {
+    const {list, countAnswered, countQuestions} = this.props;
+
+    if (countAnswered() === countQuestions()) {
+      return "All questions are answered";
+    } else {
+      return <Link to="/">Review {countQuestions() - countAnswered()} questions</Link>
+    }
+  }
+
   render() {
     if (this.answeredQuestions().size > 0) {
       return <Row>
       <Col xs={12} md={12} lg={12}>
+        <h2>Review questions</h2>
+        {this.linkReview()}
         <h2>Results</h2>
-          <Panel header={<h3>All results</h3>}>
-            {this.renderResults()}
-          </Panel>
+        <Panel header={<h3>All results</h3>}>
+          {this.renderResults()}
+        </Panel>
         </Col>
       </Row>;
     } else {
