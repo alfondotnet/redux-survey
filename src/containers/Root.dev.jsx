@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Provider } from 'react-redux';
 import { ReduxRouter } from 'redux-router';
-//import Devtools from './DevTools';
+import DevTools from './DevTools';
 
 export default class Root extends Component {
   render() {
@@ -14,6 +14,7 @@ export default class Root extends Component {
             location={{}}
             params={{}}
             components={[]} />
+          <DevTools />
         </div>
       </Provider>
     );
