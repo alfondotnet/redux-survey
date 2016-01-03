@@ -11,7 +11,8 @@ import * as QuestionActions from '../actions/question';
 
 class App extends Component {
   static propTypes = {
-    children: PropTypes.node
+    children: PropTypes.node,
+    actions: PropTypes.object.isRequired,
   };
 
   signAnswer(ans) {
@@ -42,6 +43,11 @@ class App extends Component {
     return list.size;
   }
 
+  onAnswerQuestion(option, questionIndex) {
+    const {actions} = this.props;
+    actions.answer(questionIndex, option);
+  }
+
   render() {
     const { dispatch, list, onAnswer, children, actions } = this.props;
 
@@ -50,7 +56,8 @@ class App extends Component {
                                             list,
                                             actions,
                                             countAnswered: () => this.countAnswered(),
-                                            countQuestions: () => this.countQuestions()
+                                            countQuestions: () => this.countQuestions(),
+                                            onAnswerQuestion: (op,qi) => this.onAnswerQuestion(op,qi)
                                           })}
            </div>;
   }

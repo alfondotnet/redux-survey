@@ -7,16 +7,14 @@ import {Panel, Row, Col, ProgressBar} from 'react-bootstrap';
 class QuestionList extends Component {
 
   static propTypes = {
-    // list is set to optional as this component is created with cloneElement so isRequired would show a
+    // the props are set to optional as this component is created with cloneElement so isRequired would show a
     // warning, this can be done with the help of contexts
     // https://github.com/facebook/react/issues/4494
     list: PropTypes.object,
+    actions: PropTypes.object,
+    countAnswered: PropTypes.func,
+    onAnswerQuestion: PropTypes.func,
   };
-
-  onAnswerQuestion(option, questionIndex) {
-    const {actions} = this.props;
-    actions.answer(questionIndex, option);
-  }
 
   renderProgressBar(percentage) {
 
@@ -32,7 +30,7 @@ class QuestionList extends Component {
   }
 
   renderListQuestions() {
-    const {list, actions, countAnswered} = this.props;
+    const {list, countAnswered, onAnswerQuestion} = this.props;
 
     if (countAnswered() === list.size)
     {
@@ -43,7 +41,7 @@ class QuestionList extends Component {
           key={'question_'+questionIndex}
           questionIndex={questionIndex}
           question={q}
-          onAnswer={(op,qi) => this.onAnswerQuestion(op,qi)} />
+          onAnswer={(op,qi) => onAnswerQuestion(op,qi)} />
       }).toList();
     }
   }
