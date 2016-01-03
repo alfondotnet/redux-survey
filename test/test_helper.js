@@ -16,3 +16,4 @@ Object.keys(window).forEach((key) => {
 
 
 chai.use(chaiImmutable);
+chai.config.truncateThreshold = 0;
