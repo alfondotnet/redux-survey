@@ -4,7 +4,7 @@ import {Panel, Button, ButtonGroup, Col} from 'react-bootstrap';
 class Question extends Component {
   static propTypes = {
     question: PropTypes.object.isRequired,
-    questionIndex: PropTypes.string.isRequired,
+    questionIndex: PropTypes.number.isRequired,
     onAnswer: PropTypes.func.isRequired
   };
 
