@@ -8,6 +8,7 @@ import { pushState } from 'redux-router';
 import * as stepsTypes from '../constants/Steps';
 import { changeStep } from '../actions/ui';
 import * as QuestionActions from '../actions/question';
+import { countAnswered, countQuestions, onAnswerQuestion } from '../util/questionsFunctions';
 
 class App extends Component {
   static propTypes = {
@@ -15,38 +16,7 @@ class App extends Component {
     actions: PropTypes.object.isRequired,
   };
 
-  signAnswer(ans) {
-    if (ans === null) {
-      return null;
-    } else {
-      return 1;
-    }
-  }
 
-  sumNotCoercion(a,b) {
-    if (a === null && b === null) {
-      return null;
-    } else {
-      return a + b;
-    }
-  }
-
-  countAnswered() {
-    const {list} = this.props;
-    return list.skip(1).map(q => q.get('answer'))
-               .reduce((red,val) => this.sumNotCoercion(red,this.signAnswer(val)),
-                       this.signAnswer(list.first().get('answer')));
-  }
-
-  countQuestions() {
-    const {list} = this.props;
-    return list.size;
-  }
-
-  onAnswerQuestion(option, questionIndex) {
-    const {actions} = this.props;
-    actions.answer(questionIndex, option);
-  }
 
   render() {
     const { dispatch, list, onAnswer, children, actions } = this.props;
@@ -55,9 +25,9 @@ class App extends Component {
             {React.cloneElement(children, {
                                             list,
                                             actions,
-                                            countAnswered: () => this.countAnswered(),
-                                            countQuestions: () => this.countQuestions(),
-                                            onAnswerQuestion: (op,qi) => this.onAnswerQuestion(op,qi)
+                                            countAnswered: () => countAnswered(list),
+                                            countQuestions: () => countQuestions(list),
+                                            onAnswerQuestion: (op,qi) => onAnswerQuestion(actions,op,qi)
                                           })}
            </div>;
   }
