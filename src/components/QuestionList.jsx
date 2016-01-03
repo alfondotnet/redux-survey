@@ -38,7 +38,7 @@ class QuestionList extends Component {
     } else {
       return list.map((q, questionIndex) => {
         return <Question
-          key={'question_'+questionIndex}
+          key={'question_' + questionIndex}
           questionIndex={questionIndex}
           question={q}
           onAnswer={(op,qi) => onAnswerQuestion(op,qi)} />
