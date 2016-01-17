@@ -1,24 +1,26 @@
 import React,{ Component, PropTypes } from 'react';
 import { Panel, Row, Col, Button } from 'react-bootstrap';
-import { answer} from '../actions/question';
 import { Link } from 'react-router';
 
 class Results extends Component {
 
   static propTypes = {
-    list: PropTypes.object
+    list: PropTypes.object,
+    actions: PropTypes.object,
+    countAnswered: PropTypes.func,
+    countQuestions: PropTypes.func
   };
 
   answeredQuestions() {
-    const {list, actions} = this.props;
+    const { list, actions } = this.props;
     const buttons = list.filter(q => q.get('answer') !== null)
-               .map((aq,k) => <Col key={'ansq_'+ k} lg={4} md={4} xs={12}>
-      <Button
-        onClick={() => actions.answer(k,null)}>
-        <p><strong>{aq.get('questionText')}</strong></p>
-        <p>{aq.get('possibleAnswers').get(aq.get('answer'))}</p>
-      </Button>
-    </Col>).toList();
+           .map((aq,k) =>
+          <Col key={'ansq_' + k} lg={4} md={4} xs={12}>
+            <Button onClick={() => actions.answer(k,null)}>
+              <p><strong>{aq.get('questionText')}</strong></p>
+              <p>{aq.get('possibleAnswers').get(aq.get('answer'))}</p>
+            </Button>
+          </Col>).toList();
 
     return buttons;
   }
@@ -39,10 +41,11 @@ class Results extends Component {
   }
 
   linkReview() {
-    const {list, countAnswered, countQuestions} = this.props;
+
+    const { countAnswered, countQuestions } = this.props;
 
     if (countAnswered() === countQuestions()) {
-      return "All questions are answered";
+      return 'All questions are answered';
     } else {
       return <Link to="/">Review {countQuestions() - countAnswered()} questions</Link>
     }
@@ -51,7 +54,7 @@ class Results extends Component {
   render() {
     if (this.answeredQuestions().size > 0) {
       return <Row>
-      <Col xs={12} md={12} lg={12}>
+      <Col lg={12} md={12} xs={12} >
         <h2>Review questions</h2>
         {this.linkReview()}
         <h2>Results</h2>

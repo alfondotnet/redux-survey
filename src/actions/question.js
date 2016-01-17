@@ -7,7 +7,9 @@ import questionListData from '../data/questionList';
 export function answer(questionIndex, option) {
   return dispatch => {
 
-    const score = questionListData[questionIndex].getScore(option);
+    // We have to answer null if the option is null, otherwise (un-responding) questions
+    // can't work if the user adds something like ans * 0.4 => 0 in getScore
+    const score = option === null ? null : questionListData[questionIndex].getScore(option);
 
     dispatch({
       type: types.ANSWER_QUESTION,
