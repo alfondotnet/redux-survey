@@ -27,10 +27,8 @@ describe('questionList reducer', () => {
 
     const action = {
       type: 'ANSWER_QUESTION',
-      answer: {
-        option: 2,
-        questionIndex:1
-      }
+      questionIndex: 1,
+      answer: 2
     };
 
     const updatedQuestionlist = [
@@ -42,7 +40,7 @@ describe('questionList reducer', () => {
         },
         {
           questionText: 'Question 2',
-          answer: 3,
+          answer: 2,
           possibleAnswers: [1,2,3],
           getScore: sampleQuestionList[1].getScore
         }
