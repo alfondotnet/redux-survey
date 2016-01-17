@@ -13,7 +13,7 @@ const finalCreateStore = compose(
   reduxReactRouter({
     routes,
     createHistory,
-    //routerStateSelector: state => { console.log(state); return state.get('router') }
+    // routerStateSelector: state => { console.log(state); return state.get('router') }
   }),
   DevTools.instrument()
 )(createStore);

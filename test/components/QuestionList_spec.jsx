@@ -1,8 +1,7 @@
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import QuestionList from '../../src/components/QuestionList';
-import App from '../../src/containers/App';
-import { Map, List, fromJS } from 'immutable';
+import { fromJS } from 'immutable';
 import { expect } from 'chai';
 import { countAnswered, countQuestions } from '../../src/util/questionsFunctions';
 
@@ -11,12 +10,11 @@ const {
   findAllInRenderedTree,
   isDOMComponent,
   Simulate,
-  scryRenderedDOMComponentsWithTag
 } = TestUtils;
 
 function scryRenderedDOMComponentsWithClassName(tree, className) {
   return findAllInRenderedTree(tree, function(inst) {
-    //if (isDOMComponent(inst)) console.log(inst.getAttribute('class'));
+    // if (isDOMComponent(inst)) console.log(inst.getAttribute('class'));
     return isDOMComponent(inst) && inst.getAttribute('class') === className;
   });
 }
@@ -27,13 +25,13 @@ const questionListData = fromJS([
     questionText: 'Question 1',
     answer: null,
     possibleAnswers: [1,2,3],
-    getScore: function(score) { return score; }
+    getScore: score => score
   },
   {
     questionText: 'Question 2',
     answer: null,
     possibleAnswers: [1,2,3],
-    getScore: function(score) { return score + 1; }
+    getScore: score => score + 1
   }
 ]);
 
@@ -61,7 +59,7 @@ describe('QuestionList', () => {
   it('invokes callback when a question is answered', () => {
 
     let answered;
-    const callback = (answer, index) => answered = answer;
+    const callback = answer => answered = answer;
 
     const component = renderIntoDocument(
       <QuestionList
@@ -72,8 +70,6 @@ describe('QuestionList', () => {
     );
 
     const answers = scryRenderedDOMComponentsWithClassName(component, 'answerBox');
-
-    console.log(answers[2].children[0].textContent);
 
     Simulate.click(answers[2].children[0]);
     expect(answered).to.equal(3);

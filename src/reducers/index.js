@@ -1,4 +1,3 @@
-import { Map } from 'immutable';
 import { routerStateReducer as router } from 'redux-router';
 import { combineReducers } from 'redux';
 import { steps } from './ui';
