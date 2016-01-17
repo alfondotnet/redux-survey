@@ -48,7 +48,7 @@
     "react/jsx-boolean-value": 2,
     "react/jsx-closing-bracket-location": 1,
     "react/jsx-indent-props": [2, 2],
-    "react/jsx-max-props-per-line": [2, {maximum: 3}],
+    "react/jsx-max-props-per-line": [2, {maximum: 5}],
     "react/jsx-no-undef": 2,
     "react/jsx-sort-props": 1,
     "react/jsx-uses-react": 2,
@@ -98,8 +98,6 @@
         ]
       }
     }],
-    "react/wrap-multilines": 1,
-    "react/wrap-multilines": 2,
     "space-after-keywords": [2, "always"],
     "space-before-blocks": [2, "always"],
     "space-in-parens": [2, "never"],
